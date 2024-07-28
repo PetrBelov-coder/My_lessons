@@ -11,20 +11,18 @@ def get_multiplied_digits(number) :
         str_number_without_null = ""
         for i in str_number :
             if i != "0" :
-                str_number_without_null += i
+                str_number_without_null = str_number_without_null + i
         l_ = len(str_number_without_null)
-        first = int(str_number_without_null[0])
+        if l_ == 1 :
+            first = int(str_number_without_null[0])
         if l_ > 1 :
-            result = first * get_multiplied_digits(int(str_number_without_null[1:]))
+            first = int(str_number_without_null[0])
+            multiplaer = get_multiplied_digits(int(str_number_without_null[1:]))
+            result = first * multiplaer
         else :
-            result = first
-        print("Произведение значащих цифр в числе ", number, " равно ", result)
-    return
+            result = int(str_number_without_null)
+    return result
 
-get_multiplied_digits(304010)
-
-# Создайте переменную str_number и запишите строковое представление(str) числа number в неё.
-# Основной задачей будет отделение первой цифры в числе: создайте переменную first и запишите в неё первый символ из str_number в числовом представлении(int).
-# Возвращайте значение first * get_multiplied_digits(int(str_number[1:])). Таким образом вы умножите первую цифру числа на результат работы этой же функции с числом, но уже без первой цифры.
-# 4 пункт можно выполнить только тогда, когда длина str_number больше 1, т.к. в противном случае не получится взять срез str_number[1:].
-# Если же длина str_number не больше 1, тогда вернуть оставшуюся цифру first.
+number = int(input("Введите целое число : "))
+result = get_multiplied_digits(number)
+print("Произведение значащих цифр в числе ", number, " равно ", result)
