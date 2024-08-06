@@ -17,19 +17,29 @@ class House :
     def __init__(self, name, number_of_floors, new_floor) :
         self.name = name
         self.number_of_floors = number_of_floors
+        # self.go_to(new_floor)
         def  go_to(new_floor) :
             if new_floor < 1 or new_floor > int(number_of_floors) :
                 print("Такого этажа не существует")
             else :
                 while i in range(1,self.new_floor) :
-                print("Пройден ", i, "этаж")
+                    print("Пройден ", i, "этаж")
+
+h1 = House("ЖК-1", 5, new_floor = 1)
+h2 = House("ЖК-2", 7, new_floor = 1)
+h3 = House("ЖК-3", 11, new_floor = 1)
 
 name = input("Введите имя интересующего Вас жилого комплекса : ", )
-ask = "Введите этажность жилого комплекса " + name + "  "
-number_of_floors = int(input(ask, ))
-new_floor = int(input("Какой этаж желаете осмотреть? ", ))
-House.go_to(new_floor)
-
-
+if name == "ЖК-1" :
+    new_floor = int(input("Какой этаж желаете осмотреть? ", ))
+    h1.go_to(new_floor)
+elif name == "ЖК-2" :
+    new_floor = int(input("Какой этаж желаете осмотреть? ", ))
+    h2.go_to(new_floor)
+elif name == "ЖК-3":
+    new_floor = int(input("Какой этаж желаете осмотреть? ", ))
+    h3.go_to(new_floor)
+else :
+    print("Такого жилого комплекса нет")
 
 
