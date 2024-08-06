@@ -17,13 +17,13 @@ class House :
     def __init__(self, name, number_of_floors, new_floor) :
         self.name = name
         self.number_of_floors = number_of_floors
-        # self.go_to(new_floor)
-        def  go_to(new_floor) :
-            if new_floor < 1 or new_floor > int(number_of_floors) :
-                print("Такого этажа не существует")
-            else :
-                while i in range(1,self.new_floor) :
-                    print("Пройден ", i, "этаж")
+        self.go_to(new_floor)
+    def  go_to(new_floor) :
+        if new_floor < 1 or new_floor > int(number_of_floors) :
+            print("Такого этажа не существует")
+        else :
+            while i in range(1,self.new_floor) :
+                print("Пройден ", i, "этаж")
 
 h1 = House("ЖК-1", 5, new_floor = 1)
 h2 = House("ЖК-2", 7, new_floor = 1)
