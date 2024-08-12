@@ -1,6 +1,6 @@
 # Задание "Свой YouTube"
 # Всего будет 3 класса: User, Video, UrTube.
-#  https://github.com/MihailMelikyan/modul-5.Hard/blob/master/main.py
+
 
 class User :
     """
@@ -54,22 +54,22 @@ class UrTube :
                 если же находит - ведётся отчёт в консоль на какой секунде ведётся просмотр.
                 После текущее время просмотра данного видео сбрасывается.
     """
-    def __init__(self, users, videos,current_user):
-        self.users = []
-        self.videos = []
-        self.current_user = None
+    def __init__(self, users, videos, current_user = None):
+        self.users = list(users)
+        self.videos = list(videos)
+        self.current_user = list(current_user)
     def register(self, nickname, password, age):
-        self.nickname = str(input("Введите Ваш логин : ", ))
-        self.password = int(input("Введите Ваш пароль : ", ))
-        self.age = int(input("Введите Ваш возраст : ", ))
+        self.nickname = str(nickname)
+        self.password = int(password)
+        self.age = int(age)
         for self.nickname in self.users :
             if User.nickname == self.nickname :
                 print("Пользователь ", self.nickname, " уже зарегистрирован ")
+                break
             else :
                 self.current_user = [self.nickname, self.password , self.age ]
                 self.users.append(self.current_user)
         print(self.nickname, ", Вы зарегистрированы.  Добро пожаловать в UrTube! ")
-
     def log_in(self,nickname, password ):
         if self.current_user is None :
             self.nickname = input("Введите Ваш логин : " )
