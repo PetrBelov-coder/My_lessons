@@ -67,8 +67,9 @@ class UrTube :
                 print("Пользователь ", self.nickname, " уже зарегистрирован ")
                 break
             else :
-                self.current_user = [self.nickname, hash(self.password), self.age ]
-                self.users.append(self.current_user)
+                user_new = User(self.nickname, hash(self.password), self.age)
+                self.current_user = User(self.nickname, hash(self.password), self.age)
+                self.users.append(user_new)
         print(self.nickname, ", Вы зарегистрированы в БД UrTube. Ваша учетная запись :  ", self.current_user )
         print("Список всех пользователей БД UrTube : ", users)
         # print(self.nickname, ", Добро пожаловать в UrTube! ")
