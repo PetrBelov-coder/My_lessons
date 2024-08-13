@@ -55,32 +55,40 @@ class UrTube :
                 После текущее время просмотра данного видео сбрасывается.
     """
     def __init__(self, users, videos, current_user = None):
-        self.users = list(users)
-        self.videos = list(videos)
-        self.current_user = list(current_user)
+        self.users = users
+        self.videos = videos
+        self.current_user = current_user
     def register(self, nickname, password, age):
-        self.nickname = str(nickname)
-        self.password = int(password)
-        self.age = int(age)
-        for self.nickname in self.users :
-            if User.nickname == self.nickname :
+        self.nickname = nickname
+        self.password = hash(password)
+        self.age = age
+        for user in self.users :
+            if user.nickname == self.nickname :
                 print("Пользователь ", self.nickname, " уже зарегистрирован ")
                 break
             else :
-                self.current_user = [self.nickname, self.password , self.age ]
+                self.current_user = [self.nickname, hash(self.password), self.age ]
                 self.users.append(self.current_user)
-        print(self.nickname, ", Вы зарегистрированы.  Добро пожаловать в UrTube! ")
+        print(self.nickname, ", Вы зарегистрированы в БД UrTube. Ваша учетная запись :  ", self.current_user )
+        print("Список всех пользователей БД UrTube : ", users)
+        # print(self.nickname, ", Добро пожаловать в UrTube! ")
     def log_in(self,nickname, password ):
         if self.current_user is None :
             self.nickname = input("Введите Ваш логин : " )
             self.password = int(input("Введите Ваш пароль : " ))
             for user in self.users :
-                if user.nickname == self.nickname and user.password  == hash(self.password) :
+                if user.nickname == self.nickname and user.password == hash(self.password) :
                     self.current_user = user
                     print(self.nickname, "Добро пожаловать в UrTube! ")
                     break
-ur1 = UrTube()
-ur1.register("Myself", 12345, 10)
+users = []
+videos = []
+user = User("Я", 1, 10)
+print(user.nickname, user.password, user.age )
+ur1 = UrTube(users, videos)
+ur1.register("Me", 1, 70)
+
+
 
 
 
