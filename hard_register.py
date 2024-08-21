@@ -43,13 +43,13 @@ class UrTube :
         self.current_user = None
     def register(self, nickname, password, age):
         new_user = User(nickname, hash(password), age)
-        for existing_user in self.users:
-            if existing_user.nickname == nickname:
-                print(existing_user.nickname, ", Вы уже были зарегистрированы в БД UrTube. ",
-                      " Ваша учетная запись - Никнейм: ", existing_user.nickname, ", ",
-                      " Пароль: ", existing_user.password,
-                      " Возраст: ", existing_user.age)
-                return
+        for current_user in self.users:
+            if current_user.nickname == nickname and current_user.password == hash(password) :
+                print(f"{current_user.nickname}, Вы уже были зарегистрированы в БД UrTube. "
+                    f"Ваша учетная запись - Никнейм:, {current_user.nickname}, "
+                    f"Пароль:, {current_user.password}, Возраст:, {current_user.age}")
+                break
+            break
         self.users.append(new_user)
         self.current_user = new_user
         print(f"{new_user.nickname}, Вы успешно зарегистрированы в БД UrTube. "
@@ -78,8 +78,9 @@ class UrTube :
 print("    Тест метода register")
 urt = UrTube()
 urt.register("Me", "1", 70)
+urt.register("Me", "2", 70)
 urt.register("Anybody", 1, 72)
-urt.register("You", "C3", 72)
+urt.register("You", "1", 72)
 print("Список всех пользователей БД UrTube:")
 for user in urt.users:
     print(" ",user.nickname, user.password, user.age)
